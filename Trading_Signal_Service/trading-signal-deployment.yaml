@@ -1,25 +1,23 @@
+
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: trading-signal-deployment
+  name: Trading_Signal_Service
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: trading-signal
+      app: signal-generator
   template:
     metadata:
       labels:
-        app: trading-signal
+        app: signal-generator
     spec:
       containers:
-        - name: trading-signal
-          image: your-eb2kh/trading-signal:latest
-          resources:
-            limits:
-              cpu: "0.5"
-              memory: "512Mi"
-            requests:
-              cpu: "0.25"
-              memory: "256Mi"
-         
+      - name: signal-generator
+        image: cheraghipour/Trading_Signal_Service:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000  
+        - containerPort: 8765 

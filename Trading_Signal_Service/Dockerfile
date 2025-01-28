@@ -1,20 +1,9 @@
-# Use the official Node.js image as the base image
-FROM node:14
+FROM python:3.9-slim
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json files into the container
-COPY package*.json ./
+RUN pip install --no-cache-dir fastapi uvicorn websockets requests pydantic
 
-# Install dependencies
-RUN npm install
+COPY signal-generator.py .
 
-# Copy the service source code into the container
-COPY Trading_signal.js .
-
-# Expose port 8000 for the Express server
-EXPOSE 8000
-
-# Specify the command to run the service
-CMD ["node", "Trading_signal.js"]
+CMD ["python", "signal-generator.py"]

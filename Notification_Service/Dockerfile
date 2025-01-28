@@ -1,20 +1,11 @@
-# Use the official Node.js image as the base image
-FROM node:14
 
-# Set the working directory inside the container
+
+FROM python:3.9-slim
+
 WORKDIR /app
 
-# Copy package.json and package-lock.json files into the container
-COPY package*.json ./
+RUN pip install --no-cache-dir fastapi uvicorn websockets requests pydantic
 
-# Install dependencies
-RUN npm install
+COPY notification.py .
 
-# Copy the service source code into the container
-COPY . .
-
-# Expose port 8081 for WebSocket server
-EXPOSE 8081
-
-# Specify the command to run the service
-CMD ["node", "notification.js"]
+CMD ["python", "notification.py"]

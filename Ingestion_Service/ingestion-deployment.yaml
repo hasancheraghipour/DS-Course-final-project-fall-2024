@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: ingestion-deployment
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: ingestion
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ingestion
-          image: eb2kh/ingestion:latest
+          image: chearghipour/ingestion:latest
           resources:
             limits:
               cpu: "1"

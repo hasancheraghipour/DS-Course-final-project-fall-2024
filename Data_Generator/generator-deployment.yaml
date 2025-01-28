@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: generator
-          image: eb2kh/generator:latest
+          image: chearghipour/generator:latest
           resources:
             limits:
               cpu: "0.5"

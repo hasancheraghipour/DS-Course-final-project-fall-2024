@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: aggregation
-        image: eb2kh/aggregation
+        image: cheraghipour/aggregation
         ports:
         - containerPort: 8000
