@@ -15,8 +15,8 @@ def ingest():
     # return data
 # ----------------------------------------
 #Validate data
-# @app.route('/ingest', methods=['POST'])
-# def ingest():
+@app.route('/ingest', methods=['POST'])
+def ingest():
     data = request.get_json()  # assuming you're sending JSON
 
     # List of valid stock symbols
